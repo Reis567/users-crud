@@ -1,0 +1,16 @@
+{
+  "name": "estudo",
+  "version": "1.0.0",
+  "description": "estudo de node",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon index.js"
+  },
+  "author": "reis567",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0"
+  }
+}
