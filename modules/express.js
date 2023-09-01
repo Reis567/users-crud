@@ -3,6 +3,13 @@ const UserModel = require('../src/models/user.models')
 const app = express();
 app.use(express.json());
 
+app.use((req, res, next) => {
+    console.log(`Request type : ${req.method}`);
+    console.log(`Content type : ${req.headers["content-type"]}`);
+    console.log(`Date : ${new Date()}`);
+    next();
+})
+
 app.get('/users', async (req, res) => {
     try {
         const users = await UserModel.find({});
@@ -37,7 +44,7 @@ app.post('/users', async (req, res) => {
 app.patch('/users/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const user = await UserModel.findByIdAndUpdate(id, req.body,{new:true})
+        const user = await UserModel.findByIdAndUpdate(id, req.body, { new: true })
 
         res.status(200).json(user);
     } catch (error) {
@@ -47,7 +54,7 @@ app.patch('/users/:id', async (req, res) => {
 app.delete('/users/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const user = await UserModel.findByIdAndRemove(id, req.body,{new:true})
+        const user = await UserModel.findByIdAndRemove(id, req.body, { new: true })
 
         res.status(200).json(user);
     } catch (error) {
