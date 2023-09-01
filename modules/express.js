@@ -5,6 +5,8 @@ app.use(express.json());
 
 app.set('view engine','ejs');
 app.set('views' , "src/views");
+// Configurar o Express para servir arquivos estáticos da pasta "src/public"
+app.use(express.static('src/public'));
 
 
 app.use((req, res, next) => {
